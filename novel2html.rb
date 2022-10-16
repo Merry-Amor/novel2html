@@ -51,14 +51,15 @@ paragraphAr.each { |line|
           lineRe.push('</span>')
           gomaFlagS = 0
           gomaFlagE = 0
+        else
+          lineRe.push('》')
+          gomaFlagS = 0
+          gomaFlagE = 0
         end
       elsif s == '—' then
         lineRe.push('―')
       else
-        if gomaFlagE == 1 then
-          lineRe.push('》')
-          gomaFlagE = 0
-        elsif gomaFlagS == 1 then
+        if gomaFlagS == 1 then
           lineRe.push('《')
           gomaFlagS = 0
         end
