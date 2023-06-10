@@ -15,8 +15,12 @@ end
 
 paragraphAr = paragraph.split("\n")
 
+size = paragraphAr.size
+i = 1
+
 result = ['<p>']
 paragraphAr.each { |line|
+  puts "#{i} / #{size}"
   lineAr = line.split(//)
   lineRe = []
   rubyFlag = false
@@ -80,13 +84,14 @@ paragraphAr.each { |line|
   else
     result.push("<br />\n")
   end
+  i = i + 1
 }
 result.pop
 result.push('</p>')
 
 last_result = result.join('')
 
-printf(last_result + ("\n"))
+puts(last_result)
 
 open('./result.txt', 'w') do |file|
   file.write(last_result)
