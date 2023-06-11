@@ -1,4 +1,4 @@
-printf "処理したいテキストファイルのファイルパスを入力してください。\n(何も入力せずEnterでこのプログラムと同じ位置に存在するtext.txtを読み込みます。)\n>"
+print "処理したいテキストファイルのファイルパスを入力してください。\n(何も入力せずEnterでこのプログラムと同じ位置に存在するtext.txtを読み込みます。)\n>"
 filename = gets.chomp!
 
 if filename == '' then
