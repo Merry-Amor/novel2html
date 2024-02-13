@@ -25,8 +25,11 @@ paragraphAr.each { |line|
   lineRe = []
   rubyFlag = false
   emptyLine = false
+  bbFlag = false
   gomaFlagS = 0
   gomaFlagE = 0
+  bbFlagS = 0
+  bbFlagE = 0
   if line == "" then
     result.pop
     lineRe.push("</p>\n<p>&nbsp;</p>\n<p>")
