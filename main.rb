@@ -25,7 +25,6 @@ paragraphAr.each { |line|
   lineRe = []
   rubyFlag = false
   emptyLine = false
-  bbFlag = false
   gomaFlagS = 0
   gomaFlagE = 0
   bbFlagS = 0
@@ -37,8 +36,19 @@ paragraphAr.each { |line|
   else
     lineAr.each { |s|
       if (s == "｜") then
-        lineRe.push('<ruby><rb>')
-        rubyFlag = true
+        if bbFlagS < 1 then
+          bbFlagS += 1
+        elsif bbFlagS == 1 then
+          bbFlagS += 1
+          lineRe.push('<span class="bb">')
+          p bbFlagS
+        elsif bbFlagS ==2 && bbFlagE < 1 then
+          bbFlagE += 1
+        elsif bbFlagE == 1 then
+          lineRe.push('</span>')
+          bbFlagS = 0
+          bbFlagE = 0
+        end
       elsif ( s == '《') then
         if rubyFlag then
           lineRe.push('</rb><rp>（</rp><rt>')
@@ -70,8 +80,18 @@ paragraphAr.each { |line|
           lineRe.push('《')
           gomaFlagS = 0
         end
-        lineRe.push(s)
+        if bbFlagS == 1 then
+          lineRe.push('<ruby><rb>')
+          rubyFlag = true
+          bbFlagS = 0
+        end
+        if bbFlagS == 2 then
+          lineRe.push('―')
+        else
+          lineRe.push(s)
+        end
       end
+      p "bbFlagS : #{bbFlagS} lineRe : #{lineRe}"
     }
   end
   if gomaFlagE == 1 then
