@@ -41,7 +41,6 @@ paragraphAr.each { |line|
         elsif bbFlagS == 1 then
           bbFlagS += 1
           lineRe.push('<span class="bb">')
-          p bbFlagS
         elsif bbFlagS ==2 && bbFlagE < 1 then
           bbFlagE += 1
         elsif bbFlagE == 1 then
@@ -91,7 +90,6 @@ paragraphAr.each { |line|
           lineRe.push(s)
         end
       end
-      p "bbFlagS : #{bbFlagS} lineRe : #{lineRe}"
     }
   end
   if gomaFlagE == 1 then
